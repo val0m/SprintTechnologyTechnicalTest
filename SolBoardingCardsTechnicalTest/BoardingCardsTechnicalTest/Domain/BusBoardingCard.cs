@@ -1,10 +1,8 @@
-﻿using BoardingCards.DomainShared.Enums;
-
-namespace BoardingCards.Domain
+﻿namespace BoardingCards.Domain
 {
     public class BusBoardingCard : BaseBoardingCard
     {
-        public BusBoardingCard(string departure, string destination, string seatNumber) : base(TransportType.Bus, departure, destination, seatNumber)
+        public BusBoardingCard(string departure, string destination, string seatNumber) : base(departure, destination, seatNumber)
         {
         }
 
