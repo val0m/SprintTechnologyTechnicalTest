@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoardingCards", "BoardingCardsTechnicalTest\BoardingCards.csproj", "{A18FECAB-200D-49FB-9721-8D02726A748D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BoardingCardsTest", "BoardingCardsTest\BoardingCardsTest.csproj", "{F0BF2C3E-08D5-4562-8FF4-D2DF1B5E4CBD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{A18FECAB-200D-49FB-9721-8D02726A748D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A18FECAB-200D-49FB-9721-8D02726A748D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A18FECAB-200D-49FB-9721-8D02726A748D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0BF2C3E-08D5-4562-8FF4-D2DF1B5E4CBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0BF2C3E-08D5-4562-8FF4-D2DF1B5E4CBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0BF2C3E-08D5-4562-8FF4-D2DF1B5E4CBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0BF2C3E-08D5-4562-8FF4-D2DF1B5E4CBD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
