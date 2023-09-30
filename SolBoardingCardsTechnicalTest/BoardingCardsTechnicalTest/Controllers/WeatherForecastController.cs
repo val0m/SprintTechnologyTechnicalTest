@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace BoardingCardsTechnicalTest.Controllers
+namespace BoardingCards.Controllers
 {
     [ApiController]
     [Route("[controller]")]

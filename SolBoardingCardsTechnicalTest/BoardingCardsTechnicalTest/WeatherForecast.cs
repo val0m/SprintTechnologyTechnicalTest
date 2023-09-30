@@ -1,4 +1,4 @@
-namespace BoardingCardsTechnicalTest
+namespace BoardingCards
 {
     public class WeatherForecast
     {
