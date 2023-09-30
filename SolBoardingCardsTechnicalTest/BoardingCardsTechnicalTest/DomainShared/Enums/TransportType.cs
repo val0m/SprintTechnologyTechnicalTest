@@ -1,4 +1,6 @@
-﻿namespace BoardingCards.DomainShared.Enums
+﻿using System.ComponentModel;
+
+namespace BoardingCards.DomainShared.Enums
 {
     public enum TransportType
     {
@@ -6,6 +8,7 @@
         Plane = 1,
         Train = 2,
         Bus = 3,
-        Taxi = 4
+        AirportBus = 4,
+        Taxi = 5
     }
 }

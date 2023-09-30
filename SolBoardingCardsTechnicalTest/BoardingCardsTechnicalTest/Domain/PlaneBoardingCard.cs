@@ -4,23 +4,25 @@ namespace BoardingCards.Domain
 {
     public class PlaneBoardingCard : BaseBoardingCard
     {
-        public PlaneBoardingCard(string departure, string destination, string seat, string airport, string gate, string? tickerCounter) : base(TransportType.Plane, departure, destination)
+        public PlaneBoardingCard(string departure, string destination, string seatNumber, string flightNumber, string gateNumber, string? baggageTicketCounter = null) : base(TransportType.Plane, departure, destination, seatNumber)
         {
-            if (string.IsNullOrWhiteSpace(seat))
+            if (string.IsNullOrWhiteSpace(seatNumber))
             {
-                throw new ArgumentNullException(nameof(seat), "The seat is a mandatory item for an 'plane' boarding pass.");
+                throw new ArgumentNullException(nameof(seatNumber), "The seat is a mandatory item for an 'plane' boarding pass.");
             }
 
-            Seat = seat;
-            Airport = airport;
-            Gate = gate;
-            TicketCounter = tickerCounter;
+            FlightNumber = flightNumber;
+            GateNumber = gateNumber;
+            BaggageTicketCounter = baggageTicketCounter;
         }
 
-        public required string Airport { get; init; }
-        public required string Gate { get; init; }
-        public string? TicketCounter { get; init; }
+        public required string GateNumber { get; init; }
+        public required string FlightNumber { get; init; }
+        public string? BaggageTicketCounter { get; init; }
 
-        public override string SeatInformation => $"Get {Gate}, seat {Seat}.";
+        private string BaggageTicketCounterInformation => !string.IsNullOrWhiteSpace(BaggageTicketCounter) ? $"Baggage drop at ticket counter {BaggageTicketCounter}." : "Baggage will be automatically transferred from your last leg.";
+        public override string SeatInformation => $"Get {GateNumber}, seat {SeatNumber}.";
+
+        public override string ToString() => $"From {Departure}, take flight {FlightNumber} to {Destination}. {SeatInformation} {BaggageTicketCounterInformation}";
     }
 }
