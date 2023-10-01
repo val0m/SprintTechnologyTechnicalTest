@@ -1,8 +1,8 @@
 ﻿using BoardingCards.DomainShared.Enums;
 
-namespace BoardingCards.Contracts
+namespace BoardingCards.Applications.Queries
 {
-    public class BoardingCardInput
+    public class BoardingCardRequest
     {
         public TransportType Type { get; init; }
         public required string Departure { get; init; }
