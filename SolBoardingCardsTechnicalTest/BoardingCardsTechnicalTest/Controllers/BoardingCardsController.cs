@@ -1,5 +1,6 @@
 using BoardingCards.Applications.Queries;
 using BoardingCards.Applications.Request;
+using BoardingCards.DomainShared.Exceptions;
 using FluentValidation;
 using FluentValidation.Results;
 using MediatR;
@@ -46,6 +47,12 @@ namespace BoardingCards.Controllers
                 List<string> summaries = await _mediator.Send(request);
 
                 return Ok(summaries);
+            }
+            catch (BusinessException ex)
+            {
+                _logger.LogError(ex, $"An error business has been detected on the route {nameof(GetSummariesAsync)} - {ex.GetType()}");
+
+                return StatusCode(ex.StatusCode, ex.Message);
             }
             catch (Exception ex)
             {

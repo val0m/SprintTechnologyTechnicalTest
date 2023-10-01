@@ -6,6 +6,5 @@ namespace BoardingCards.Contracts
     public interface IBoardingCardService
     {
         public BaseBoardingCard GetBoardingCardFactory(BoardingCardRequest input);
-        public List<string> GetSummaries(List<BoardingCardRequest> boardingCardInputs);
     }
 }

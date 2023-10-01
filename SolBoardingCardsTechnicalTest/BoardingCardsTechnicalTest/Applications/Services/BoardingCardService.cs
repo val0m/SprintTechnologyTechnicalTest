@@ -2,6 +2,7 @@
 using BoardingCards.Contracts;
 using BoardingCards.Domain;
 using BoardingCards.DomainShared.Enums;
+using BoardingCards.DomainShared.Exceptions;
 
 namespace BoardingCards.Applications
 {
@@ -10,17 +11,12 @@ namespace BoardingCards.Applications
         public BaseBoardingCard GetBoardingCardFactory(BoardingCardRequest input)
             => input.Type switch
             {
-                TransportType.Train => new TrainBoardingCard(input.Departure, input.Destination),
-                TransportType.Airplane => new AirplaneBoardingCard(input.Departure, input.Destination, input.SeatNumber, input.TransportNumber, input.GateNumber, input.BaggageTicketCounter),
-                TransportType.AirportBus => new AirportBusBoardingCard(input.Departure, input.Destination, input.SeatNumber),
-                TransportType.Bus => new BusBoardingCard(input.Departure, input.Destination, input.SeatNumber),
+                TransportType.Train => new TrainBoardingCard(input.Departure, input.Destination, input.TransportNumber, input.SeatNumber),
+                TransportType.Airplane => new AirplaneBoardingCard(input.Departure, input.Destination, input.TransportNumber, input.SeatNumber, input.GateNumber, input.BaggageTicketCounter),
+                TransportType.AirportBus => new AirportBusBoardingCard(input.Departure, input.Destination, input.TransportNumber, input.SeatNumber),
+                TransportType.Bus => new BusBoardingCard(input.Departure, input.Destination, input.TransportNumber, input.SeatNumber),
                 TransportType.Taxi => new TaxiBoardingCard(input.Departure, input.Destination),
-                _ => throw new NotImplementedException($"The {input.Type} transport has not yet been implemented.")
+                _ => throw new BoardingCardNotSupportedException($"The {input.Type} transport has not yet been implemented.")
             };
-
-        public List<string> GetSummaries(List<BoardingCardRequest> boardingCardInputs)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

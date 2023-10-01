@@ -11,6 +11,7 @@ namespace BoardingCards.DomainShared.Validators
             RuleFor(x => x.Type).NotEqual(TransportType.None);
             RuleFor(x => x.Departure).NotEmpty();
             RuleFor(x => x.Destination).NotEmpty();
+            RuleFor(x => x.Departure).NotEqual(x => x.Destination);
             RuleFor(x => x.TransportNumber).NotEmpty()
                 .When(x => x.Type == TransportType.Train || x.Type == TransportType.Airplane);
             RuleFor(x => x.SeatNumber).NotEmpty()

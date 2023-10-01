@@ -1,4 +1,5 @@
-﻿using BoardingCards.Applications.Queries;
+﻿using BoardingCards.Applications;
+using BoardingCards.Applications.Queries;
 using BoardingCards.Applications.Request;
 using BoardingCards.Contracts;
 using BoardingCards.DomainShared.Enums;
@@ -16,16 +17,16 @@ namespace BoardingCardsTest.Applications
         {
             // TODO Implement resolve IBoardingCardService with autofac
             _sut = new(
-                new Mock<IBoardingCardService>().Object,
+                new BoardingCardService(),
                 new Mock<ILogger<SummariesBoardingCardsQuery.Handler>>().Object
             );
         }
 
         private readonly List<BoardingCardRequest> boardingCardInputsCorrect = new()
         {
-            new() { Type = TransportType.Train, Departure = "Madrid" , Destination = "Barcelona", SeatNumber = "45B" },
             new() { Type = TransportType.AirportBus, Departure = "Barcelona" , Destination = "Gerona Airport" },
             new() { Type = TransportType.Airplane, Departure = "Gerona Airport" , Destination = "Stockholm", SeatNumber = "3A", GateNumber = "45B", TransportNumber = "SK455", BaggageTicketCounter = "344" },
+            new() { Type = TransportType.Train, Departure = "Madrid" , Destination = "Barcelona", TransportNumber = "78A", SeatNumber = "45B" },
             new() { Type = TransportType.Airplane, Departure = "Stockholm" , Destination = "New York JFK", SeatNumber = "7B", GateNumber = "22", TransportNumber = "SK22" },
         };
 
@@ -33,7 +34,7 @@ namespace BoardingCardsTest.Applications
         public async void Should_GetSummaries_WhenInputIsCorrect()
         {
             // Arrange
-            SummariesBoardingCardsQuery.Request request = new() { BoardingCardRequest = boardingCardInputsCorrect };
+            SummariesBoardingCardsQuery.Request request = new(boardingCardInputsCorrect);
 
             // Act
             List<string> result = await _sut.Handle(request, cancellationToken: default);

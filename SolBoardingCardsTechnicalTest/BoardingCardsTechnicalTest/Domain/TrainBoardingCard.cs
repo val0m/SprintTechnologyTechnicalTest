@@ -2,7 +2,7 @@
 {
     public class TrainBoardingCard : BaseBoardingCard
     {
-        public TrainBoardingCard(string departure, string destination) : base(departure, destination)
+        public TrainBoardingCard(string departure, string destination, string transportNumber, string seatNumber) : base(departure, destination, transportNumber, seatNumber)
         {
         }
 
