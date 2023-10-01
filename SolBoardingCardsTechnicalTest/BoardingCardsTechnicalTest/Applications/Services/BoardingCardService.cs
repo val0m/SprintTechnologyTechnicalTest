@@ -16,7 +16,7 @@ namespace BoardingCards.Applications
                 TransportType.AirportBus => new AirportBusBoardingCard(input.Departure, input.Destination, input.TransportNumber, input.SeatNumber),
                 TransportType.Bus => new BusBoardingCard(input.Departure, input.Destination, input.TransportNumber, input.SeatNumber),
                 TransportType.Taxi => new TaxiBoardingCard(input.Departure, input.Destination),
-                _ => throw new BoardingCardNotSupportedException($"The {input.Type} transport has not yet been implemented.")
+                _ => throw new BoardingCardNotSupportedException($"The {input.Type} transport has not yet been supported.")
             };
     }
 }
